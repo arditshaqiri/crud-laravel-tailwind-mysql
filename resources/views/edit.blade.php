@@ -12,7 +12,7 @@
         <div class="w-1/3  flex flex-col justify-center align-center ">
             <h1 class = "w-full text-center p-5 text-2xl font-bold height-auto shadow-md">Contact Manager</h1>
             <div class="flex w-full p-5 flex flex-col">
-               
+               <!--form-->
                 <form method = "POST" action = "/contacts/{{$contact->id}}">
                 @method('PUT')
                 @csrf
