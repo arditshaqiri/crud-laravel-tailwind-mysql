@@ -20,6 +20,7 @@
                     @if(count($contacts) == 0)
                         <h2 class = "m-4 w-full text-center">No contact found.</h2>
                     @endif
+                   
                     @foreach($contacts as $contact)
                     <div class = "border-b-2 border-stone-200 flex items-center justify-between">
                         <div class="w-4/5 flex items-center py-3 ">
@@ -30,10 +31,15 @@
                        </div>
                       
                         </div>
-                        <a href = "contacts/{{ $contact->id}}/edit" > <img class = "w-5" src="{{url('/img/edit.png')}}" /></a>
-                        <form method="post" class = "w-5" action="/contacts/{{ $contact->id }}">
-                            @csrf
+                       @php
+                            $page = 'null';
 
+                            if(request()->has('page'))  $page =  request()->get('page');
+
+                        @endphp
+                        <a href = "contacts/{{ $contact->id}}/edit" > <img class = "w-5" src="{{url('/img/edit.png')}}" /></a>
+                        <form method="post" class = "w-5" action="{{ route('contacts.destroy',['contact'=>$contact->id, 'page'=>$page])}}">
+                            @csrf
                             @method('delete')
             
                             <button > <img src="{{url('/img/delete.png')}}" /></button>
@@ -41,7 +47,9 @@
                     </div>
                      @endforeach 
                
-                   
+            </div>
+            <div class="w-full mt-4">
+                {{ $contacts->links() }}
             </div>
         </div>
 </body>

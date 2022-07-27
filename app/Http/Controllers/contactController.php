@@ -9,7 +9,7 @@ class contactController extends Controller
 {
     public function index(){
         return view('index',[
-            'contacts' =>contacts::all()
+            'contacts' =>contacts::paginate(3)
         ]);
            
     }
@@ -57,10 +57,12 @@ class contactController extends Controller
     }
 
     // delete contact
-    public function destroy(contacts $contact)
+    public function destroy(contacts $contact,$page)
     {
+       
         $contact->delete();
 
-        return redirect('/');
+         return redirect('/?page='.$page);
+      
     }
 }

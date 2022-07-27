@@ -13,7 +13,7 @@
             <h1 class = "w-full text-center p-5 text-2xl font-bold height-auto shadow-md">Contact Manager</h1>
             <div class="flex w-full p-5 flex flex-col">
                <!--form-->
-                <form method = "POST" action = "/contacts/{{$contact->id}}">
+                <form method = "POST" action = "{{ route('contacts.update', $contact->id) }}">
                 @method('PUT')
                 @csrf
                 <a href="/"><img class = "w-6 my-2" src="{{url('/img/back.png')}}" /></a>
