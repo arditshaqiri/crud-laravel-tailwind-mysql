@@ -33,12 +33,12 @@
                         </div>
                        @php
                             $page = 'null';
-
-                            if(request()->has('page'))  $page =  request()->get('page');
+                            if(request()->has('page') && count($contacts)>1)  $page =  request()->get('page');
 
                         @endphp
                         <a href = "contacts/{{ $contact->id}}/edit" > <img class = "w-5" src="{{url('/img/edit.png')}}" /></a>
                         <form method="post" class = "w-5" action="{{ route('contacts.destroy',['contact'=>$contact->id, 'page'=>$page])}}">
+                        {{-- <form method="post" class = "w-5" action="/contacts/{{$contact->id}}/{{$page}}"> --}}
                             @csrf
                             @method('delete')
             

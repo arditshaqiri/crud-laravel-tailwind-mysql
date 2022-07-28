@@ -22,15 +22,12 @@ class contactController extends Controller
 
     public function store()
     {
-        request()->validate([
+        $validated = request()->validate([
             'name' => 'required',
-            'contact' => 'required',
+            'contact' => 'required|email',
         ]);
 
-        contacts::create([
-            'name' => request('name'),
-            'contact' => request('contact')
-        ]);
+        contacts::create($validated);
 
         return redirect('/');
     }
@@ -59,10 +56,8 @@ class contactController extends Controller
     // delete contact
     public function destroy(contacts $contact,$page)
     {
-       
         $contact->delete();
 
          return redirect('/?page='.$page);
-      
     }
 }

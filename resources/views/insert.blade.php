@@ -19,11 +19,17 @@
                 <div class="mb-4">
                     <label class="font-bold text-gray-800" for="title">Name: </label>
                     <input class="h-10 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm " id="name" name="name">
+                    @error('name')
+                    <div class="alert alert-danger"><p class = "text-red-500">{{ $message }}</p></div>
+                    @enderror
                 </div>
     
                 <div class="mb-4">
                     <label class="font-bold text-gray-800" for="content">Contact: </label>
                     <input class="h-10 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm " id="contact" name="contact">
+                    @error('contact')
+                    <div class="alert alert-danger"><p class = "text-red-500">{{ $message }}</p></div>
+                    @enderror
                 </div>
     
                 <button class="bg-sky-600 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow">Insert</button>
